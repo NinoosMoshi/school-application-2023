@@ -43,7 +43,6 @@ public class CourseServiceImpl implements CourseService {
         course.setInstructor(instructor);
         Course savedCourse = courseDao.save(course);
         return courseMapper.fromCourse(savedCourse);
-
     }
 
     @Override
