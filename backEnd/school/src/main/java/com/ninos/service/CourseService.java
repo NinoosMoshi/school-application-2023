@@ -4,7 +4,10 @@ import com.ninos.dto.CourseDTO;
 import com.ninos.entity.Course;
 import org.springframework.data.domain.Page;
 
+
 public interface CourseService {
+
+    Page<CourseDTO> loadAllCourses(int page, int size);
 
     Course loadCourseById(Long courseId);
 

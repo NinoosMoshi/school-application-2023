@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @AllArgsConstructor
 @RestController
 @RequestMapping("/courses")
@@ -16,7 +18,15 @@ public class CourseRestController {
     private final CourseService courseService;
 
 
-    @GetMapping
+    @GetMapping("/all-courses")
+    public Page<CourseDTO> getAllCourses(@RequestParam(name = "page", defaultValue = "0") int page,
+                                         @RequestParam(name = "size", defaultValue = "5") int size){
+        return courseService.loadAllCourses(page, size);
+    }
+
+
+
+    @GetMapping("/search")
     public Page<CourseDTO> searchCourses(@RequestParam(name = "keyword", defaultValue = "") String keyword,
                                          @RequestParam(name = "page", defaultValue = "0") int page,
                                          @RequestParam(name = "size", defaultValue = "5") int size){
