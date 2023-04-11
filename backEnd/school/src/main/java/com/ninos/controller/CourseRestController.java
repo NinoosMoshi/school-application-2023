@@ -34,7 +34,7 @@ public class CourseRestController {
     }
 
 
-    @DeleteMapping("/{courseId}")
+    @DeleteMapping("/delete/{courseId}")
     public void deleteCourse(@PathVariable Long courseId){
         courseService.removeCourse(courseId);
     }

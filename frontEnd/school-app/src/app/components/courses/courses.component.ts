@@ -21,7 +21,6 @@ export class CoursesComponent implements OnInit {
   theTotalElements: number = 0;
 
   searchMode: boolean = false;
-  previousKeyword: string | null | undefined;
 
 
   constructor(private courseService: CoursesService,
@@ -88,6 +87,18 @@ export class CoursesComponent implements OnInit {
   }
 
 
+  handleDeleteCourse(c:Course){
+     let conf = confirm("Are you sure?")
+     if(!conf) return;
+     this.courseService.deleteCourse(c.courseId).subscribe({
+      next:()=>{
+        this.handleListCourses();
+      },
+      error:err =>{
+        alert(err.message);
+      }
+     })
+  }
 
 
 

@@ -37,6 +37,13 @@ export class CoursesService {
   }
 
 
+  // http://localhost:8082/courses/delete/{courseId}
+  public deleteCourse(courseId: number){
+    return this.http.delete(`${environment.backendHost}/courses/delete/${courseId}`);
+  }
+
+
+
 
 }
 
